@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-api
+  labels:
+    app: product-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: product-api
+  template:
+    metadata:
+      labels:
+        app: product-api
+    spec:
+      containers:
+      - name: product-api
+        image: docker.io/tovi61xd/blautech-products:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DB_REACTIVE_URL
+          value: "postgresql://db-service:5432/prod"
+        - name: DB_USERNAME
+          value: "admin"
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials
+              key: password
+        - name: CORS_ORIGINS
+          value: "https://frontend.example.com"
+        - name: CORS_MAX_AGE
+          value: "86400"

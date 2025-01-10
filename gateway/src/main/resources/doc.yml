@@ -1,0 +1,9 @@
+springdoc:
+  show-actuator: true
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    urls:
+      - url: ${URL_PRODUCT:http://localhost:8080}/openapi
+        name: 'Product Service APIs'

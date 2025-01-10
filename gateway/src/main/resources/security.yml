@@ -1,0 +1,15 @@
+application:
+  security:
+    white-list:
+      - /webjars/**
+      - /v3/api-docs/**
+      - /*/v3/api-docs/**
+      - /*/*/v3/api-docs/**
+      - /swagger-ui.html
+      - /swagger-ui/**
+      - /swagger-resources
+      - /swagger-resources/**
+      - /actuator/**
+      - /*/actuator/**
+      - /error
+      - /api/products/**
